@@ -1,0 +1,11 @@
+- alias: EUR rate change with new value
+  description: Notifies when the EUR rate changes, showing the new value
+  triggers:
+    - entity_id: sensor.bnr_rate_eur
+      trigger: state
+  actions:
+    - data:
+        message: "New EUR rate: {{ states('sensor.bnr_rate_eur') }}"
+        title: EUR rate changed!
+      action: notify.mobile_app
+  mode: single
