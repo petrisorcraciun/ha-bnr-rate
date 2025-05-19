@@ -20,6 +20,14 @@ Home Assistant custom component for fetching and displaying the official exchang
 - `multiplier`: Multiplier (e.g., 1, 10, 100)
 - `last_success_update`: Date/time of the last successful update
 
+## Dependencies
+
+This integration does **not** use or require any additional Python libraries. All dependencies are already included in Home Assistant by default.
+
+## Data Source
+
+The exchange rates are fetched directly from the official National Bank of Romania (BNR) XML feed.
+
 ## About `const.py`
 
 The `const.py` file contains all the main constants used by the integration. You can customize the integration's behavior by editing this file:
