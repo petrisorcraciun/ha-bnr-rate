@@ -1,0 +1,13 @@
+{
+    "domain": "bnr_rate",
+    "name": "BNR Exchange Rate",
+    "documentation": "https://github.com/petrisorcraciun/ha-bnr-rate",
+    "dependencies": [],
+    "codeowners": [
+        "@petrisorcraciun"
+    ],
+    "requirements": [],
+    "version": "1.0.0",
+    "iot_class": "cloud_polling",
+    "config_flow": true
+}
