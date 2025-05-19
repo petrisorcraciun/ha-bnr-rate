@@ -1,7 +1,7 @@
 import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.const import CONF_NAME
-from .const import DOMAIN, AVAILABLE_CURRENCIES, DEFAULT_NAME, DEFAULT_CURRENCY
+from .const import DOMAIN, DEFAULT_NAME
 
 class BNRRateConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     async def async_step_user(self, user_input=None):
@@ -13,7 +13,6 @@ class BNRRateConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             step_id="user",
             data_schema=vol.Schema({
                 vol.Required(CONF_NAME, default=DEFAULT_NAME): str,
-                vol.Required("currency", default=DEFAULT_CURRENCY): vol.In(AVAILABLE_CURRENCIES),
             }),
             errors=errors,
         )
