@@ -138,7 +138,6 @@ class BNRRateSensor(SensorEntity):
                         raise BNRRateConnectionError(f"Connection error: {error}")
 
                 try:
-                    _LOGGER.warning(f"BNR XML response: {xml_data}")
                     root = ET.fromstring(xml_data)
                     ns = {"bnr": BNR_XML_NAMESPACE}
                 except Exception as error:
