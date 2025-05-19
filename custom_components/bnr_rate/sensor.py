@@ -13,10 +13,8 @@ from homeassistant.core import HomeAssistant
 
 from .const import (
     BNR_API_URL,
-    CONF_CURRENCY,
     DEFAULT_NAME,
     DEFAULT_CURRENCY,
-    MIN_TIME_BETWEEN_UPDATES,
     AVAILABLE_CURRENCIES,
     BNR_UPDATE_HOUR,
     BNR_UPDATE_MINUTE,
@@ -33,16 +31,11 @@ _LOGGER = logging.getLogger(__name__)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): str,
-    vol.Optional(CONF_CURRENCY, default=DEFAULT_CURRENCY): vol.In(AVAILABLE_CURRENCIES),
 })
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     name = config.get(CONF_NAME)
-    currency = config.get(CONF_CURRENCY)
-    if currency == "all":
-        entities = [BNRRateSensor(name, curr) for curr in AVAILABLE_CURRENCIES if curr != "all"]
-    else:
-        entities = [BNRRateSensor(name, currency)]
+    entities = [BNRRateSensor(name, curr) for curr in AVAILABLE_CURRENCIES]
     async_add_entities(entities, True)
 
     for entity in entities:
@@ -58,11 +51,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities):
     name = entry.data.get(CONF_NAME, DEFAULT_NAME)
-    currency = entry.data.get(CONF_CURRENCY, DEFAULT_CURRENCY)
-    if currency == "all":
-        entities = [BNRRateSensor(name, curr) for curr in AVAILABLE_CURRENCIES if curr != "all"]
-    else:
-        entities = [BNRRateSensor(name, currency)]
+    entities = [BNRRateSensor(name, curr) for curr in AVAILABLE_CURRENCIES]
     async_add_entities(entities, True)
     for entity in entities:
         async def scheduled_update(now, entity=entity):
@@ -85,6 +74,10 @@ class BNRRateSensor(SensorEntity):
         self._multiplier = DEFAULT_MULTIPLIER
         self._last_success_update = None
         self._attr_unique_id = f"bnr_rate_{currency.lower()}"
+
+    @property
+    def should_poll(self):
+        return False
 
     @property
     def name(self):
@@ -113,7 +106,6 @@ class BNRRateSensor(SensorEntity):
             attrs["last_success_update"] = self._last_success_update.isoformat()
         return attrs
 
-    @Throttle(MIN_TIME_BETWEEN_UPDATES)
     async def async_update(self):
         if datetime.now().weekday() in BNR_SKIP_WEEKDAYS:
             _LOGGER.info("BNRRateSensor: No request on this day (weekend).")
