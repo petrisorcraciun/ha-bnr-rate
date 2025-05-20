@@ -1,6 +1,8 @@
 # ha-bnr-rate
 Home Assistant custom component for fetching and displaying the official exchange rates from the National Bank of Romania (BNR)
 
+**Romanian version available:** [README.ro.md](./README.ro.md)
+
 ## Features
 - Sensor for each supported currency (e.g., EUR, USD, GBP)
 - Automatic update at the BNR publishing hour (default 13:05)
