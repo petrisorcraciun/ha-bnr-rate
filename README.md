@@ -8,9 +8,21 @@ Home Assistant custom component for fetching and displaying the official exchang
 - Skips requests on weekends (Saturday and Sunday)
 
 ## Installation
+
+### Manual Installation
 1. Copy the `bnr_rate` folder into your Home Assistant `custom_components` directory.
 2. Restart Home Assistant.
 3. Go to **Settings → Devices & Services → Add Integration** and search for **BNR Rate** to add and configure the integration from the UI.
+
+### HACS Installation
+
+[![Add Integration in Home Assistant](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=petrisorcraciun&repository=ha-bnr-rate&category=integration)
+
+1. In Home Assistant, go to **HACS → Integrations → Custom repositories**.
+2. Add this repository (`https://github.com/petrisorcraciun/ha-bnr-rate`) as a custom integration.
+3. Search for **BNR Rate** in HACS and install it.
+4. Restart Home Assistant.
+5. Go to **Settings → Devices & Services → Add Integration** and search for **BNR Rate** to add and configure the integration from the UI.
 
 > **Note:** You can add or remove supported currencies by editing the `AVAILABLE_CURRENCIES` list in `const.py`.
 
