@@ -64,3 +64,6 @@ The `const.py` file contains all the main constants used by the integration. You
 
 ---
 **Author:** [petrisorcraciun](https://github.com/petrisorcraciun)
+
+
+<a href="https://www.buymeacoffee.com/petrisorcraciun"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=petrisorcraciun&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff" /></a>
