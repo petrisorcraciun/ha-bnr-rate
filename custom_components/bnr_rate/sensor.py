@@ -109,7 +109,7 @@ class BNRRateSensor(SensorEntity):
     async def async_update(self):
         if datetime.now().weekday() in BNR_SKIP_WEEKDAYS:
             _LOGGER.info("BNRRateSensor: No request on this day (weekend).")
-            raise BNRRateConnectionError("BNRRateSensor: No request on this day (weekend).")
+            return
 
         for attempt in range(1, BNR_MAX_RETRIES + 1):
             try:
