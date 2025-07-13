@@ -1,0 +1,77 @@
+name: Raportare problema
+description: Raportati o problema legata de integrarea ha-bnr-rate.
+title: "Descriere scurta a problemei"
+labels: bug
+body:
+  - type: markdown
+    attributes:
+      value: >
+        ⚠️ **ATENTIE:** ⚠️
+
+        Va rugam sa oferiti cat mai multe detalii pentru a ne ajuta sa intelegem si sa rezolvam problema.
+
+  - type: input
+    id: title
+    attributes:
+      label: Titlu scurt al problemei
+      placeholder: "Descriere scurta a problemei"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrierea problemei
+      description: >
+        Explicati clar ce nu functioneaza si pasii pentru a reproduce problema.
+      placeholder: "Descrie problema aici"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: integration_version
+    attributes:
+      label: Versiunea integrarii
+      description: Selectati versiunea instalata.
+      options:
+        - "1.0.0"
+        - "1.0.1"
+        - "1.0.2"
+        - "Alta versiune"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Loguri relevante
+      description: >
+        Inclusi logurile relevante.  
+        Daca nu stiti cum sa activati modul debug, consultati documentatia.
+      placeholder: "Exemplu log: 2025-01-14 03:08:37.818 EROARE ..."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: restarted
+    attributes:
+      label: Ati incercat sa reporniti Home Assistant?
+      options:
+        - "Da"
+        - "Nu"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: operating_system
+    attributes:
+      label: Tipul instalarii Home Assistant
+      description: Selectati tipul de instalare Home Assistant pe care il folositi.
+      options:
+        - Home Assistant OS
+        - Home Assistant Supervised
+        - Home Assistant Core (venv)
+        - Home Assistant Core (Docker)
+        - Altul
+    validations:
+      required: true
