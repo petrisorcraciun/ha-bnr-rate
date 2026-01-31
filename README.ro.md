@@ -60,5 +60,3 @@ Fisierul `const.py` contine toate constantele principale utilizate de integrare.
 ## Suport
 - [GitHub](https://github.com/petrisorcraciun/ha-bnr-rate)
 
----
-**Autor:** [petrisorcraciun](https://github.com/petrisorcraciun)
